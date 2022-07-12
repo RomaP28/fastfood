@@ -1,0 +1,10 @@
+.order {
+  display: flex;
+  margin: 5px 10px;
+
+  .orderItemDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
