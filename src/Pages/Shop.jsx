@@ -25,7 +25,9 @@ function Shop({ allShops, showProducts, addToCart, active }) {
             <img src={item.img} alt="img" />
             <b>{item.title}</b>
             <p>Price: {item.price} $</p>
-            <button className={styles.button} onClick={() => addToCart(item)}>add to Cart</button>
+            <div className={styles.textbox} onClick={() => addToCart(item)}>
+              <a className={`${styles.btn} ${styles.btnanimated} ${styles.btnwhite}`} href="#">add to Cart</a>
+            </div>
           </div>
         ) :
           <p className={styles.startSign}>← Please choose your shop</p>

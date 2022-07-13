@@ -32,6 +32,7 @@ function History() {
         <div className={styles.order} key={index}>
           <div className={styles.order_header}>
             <p><span>{item.createdAt}</span> <b className={styles.order_title}>Order #{item.id}</b></p>
+            <p>Total: <b>{item.summary}$</b></p>
             <p>{item.email} {item.phone}</p>
             <p>{item.shop}</p>
           </div>

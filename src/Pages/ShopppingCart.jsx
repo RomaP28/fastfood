@@ -6,7 +6,7 @@ import CartItem from '../Components/CartItem'
 
 function Cart({ allShops }) {
   const [itemsInCart, setItemsInCart] = React.useState([])
-  // const [summary, setSummary] = React.useState(0)
+  const [summary, setSummary] = React.useState(0)
   const shop = localStorage.getItem('shop')
 
   React.useEffect(() => {
@@ -15,11 +15,19 @@ function Cart({ allShops }) {
       async function fetchData() {
         const getItemsAgain = await axios.get(`https://62cc3884a080052930a7ae22.mockapi.io/${shop.toLowerCase()}`);
         setItemsInCart(getItemsAgain.data)
-
+        getTotal(getItemsAgain.data)
       }
       fetchData()
+
     }
+
+
   }, [setItemsInCart])
+
+  const getTotal = items => {
+    const sum = Object.entries(localStorage).filter(el => el[0] !== "shop").reduce((acc, cur) => acc += items[+cur[0] - 1].price * +cur[1], 0)
+    setSummary(Math.floor(sum * 100) / 100)
+  }
 
 
   return (
@@ -28,6 +36,7 @@ function Cart({ allShops }) {
         <Form
           setItemsInCart={setItemsInCart}
           itemsInCart={itemsInCart}
+          summary={summary}
         />
       </div>
       <div className={styles.cartItems}>
@@ -37,13 +46,14 @@ function Cart({ allShops }) {
             item={item}
             itemsInCart={itemsInCart}
             setItemsInCart={setItemsInCart}
+            getTotal={getTotal}
             key={item[0] + item[1]}
           />
         )}
       </div>
-      {/* <div>
-        <p>{summary} $</p>
-      </div> */}
+      <div className={styles.total}>
+        <p>Total: {summary}$</p>
+      </div>
     </div>
   )
 }

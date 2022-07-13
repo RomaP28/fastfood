@@ -26,17 +26,35 @@
         outline: none;
       }
     }
-
-    input#submit {
-      position: absolute;
-    }
-
   }
 
   .cartItems {
+    background-color: white;
     border: 1px solid lightgrey;
     border-radius: 5px;
     width: 56%;
     overflow: auto;
   }
+
+  .total {
+    position: absolute;
+    bottom: -40px;
+    right: 50%;
+  }
+}
+
+/* ширина и цвет полосы прокрутки */
+.cartItems::-webkit-scrollbar {
+  width: 5px;
+  background-color: white;
+}
+
+/* цвет бегунка прокрутки */
+.cartItems::-webkit-scrollbar-thumb {
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.cartItems::-webkit-scrollbar-thumb:hover {
+  background-color: grey;
 }

@@ -1,6 +1,6 @@
 import React from "react"
 
-function AmountField({ amount, id, setItemsInCart, setPrice, priceForOne }) {
+function AmountField({ amount, id, itemsInCart, setItemsInCart, setPrice, priceForOne, getTotal }) {
   const [amounts, setAmount] = React.useState(0)
 
   React.useEffect(() => {
@@ -15,7 +15,9 @@ function AmountField({ amount, id, setItemsInCart, setPrice, priceForOne }) {
       setItemsInCart(prev => prev.filter(e => e.id !== id))
       localStorage.removeItem(id)
     }
-    setPrice(priceForOne * event.target.value)
+    const curPrice = priceForOne * event.target.value
+    setPrice(Math.floor(curPrice * 100) / 100)
+    getTotal(itemsInCart)
   }
 
   return (

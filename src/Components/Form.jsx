@@ -2,7 +2,7 @@ import React from "react";
 import styles from './Form.module.scss'
 import axios from "axios";
 
-function Form({ setItemsInCart, itemsInCart }) {
+function Form({ setItemsInCart, itemsInCart, summary }) {
 
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
@@ -30,6 +30,7 @@ function Form({ setItemsInCart, itemsInCart }) {
             amount: el[1]
           }
         }),
+        summary,
         phone,
         email,
         createdAt: time
@@ -62,7 +63,7 @@ function Form({ setItemsInCart, itemsInCart }) {
       <label>Address:
         <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
       </label>
-      <input id={styles.btn} type="submit" value="Order" disabled={localStorage.length < 2} />
+      <input id={styles.order} type="submit" value="Order" disabled={localStorage.length < 2} />
     </form>
   )
 }

@@ -1,13 +1,12 @@
 .cartItem {
-  border: 1px solid lightgray;
   margin: 10px;
   border-radius: 5px;
   display: flex;
   transition: all 0.1s ease-in-out;
 
   &:hover {
+    background: linear-gradient(180deg, rgba(252, 252, 252, 1) 79%, rgba(219, 219, 219, 1) 100%);
     box-shadow: 0px 0px 17px 4px rgba(92, 92, 92, 0.6);
-    border: 1px solid gray;
   }
 
   img {
@@ -24,6 +23,7 @@
   }
 
   input {
+    cursor: pointer;
     font-size: large;
     height: 30px;
     width: 50px;
